@@ -57,4 +57,3 @@ void TIM1_Init(void)
 	TIM_Cmd(TIM1, ENABLE);
 	TIM_CtrlPWMOutputs(TIM1, ENABLE);
 }
-	
