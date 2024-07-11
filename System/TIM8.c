@@ -2,6 +2,8 @@
 #include "TIM8.h"
 #include "LED.h"
 
+uint8_t ready_send_server;
+
 void TIM8_Init(void)
 {
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM8, ENABLE);
@@ -61,7 +63,7 @@ void TIM8_Init(void)
 // 20ms½øÒ»´Î
 void TIM8_UP_TIM13_IRQHandler(void)
 {
-	static uint32_t num  = 0;
+	static uint32_t num  = 0, VSendTime = 0;
 	if(TIM_GetFlagStatus(TIM8,TIM_FLAG_Update) != RESET)
 	{
 		num ++;
@@ -70,6 +72,15 @@ void TIM8_UP_TIM13_IRQHandler(void)
 			num = 0;
 			LED_Turn();
 		}
+		
+		/* Enable to send V to server */
+		VSendTime++;
+		if (VSendTime > 25)
+		{
+			VSendTime = 0;
+			ready_send_server = SET;
+		}
+		
 		TIM_ClearFlag(TIM8, TIM_FLAG_Update);
 	}
 }	

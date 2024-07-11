@@ -101,21 +101,41 @@ void Conveyor_SetPWM(uint32_t PWM)
 	TIM_SetCompare4(TIM8, PWM);
 }
 
+/**
+  * @brief  启动水泵
+  * @param  无
+  * @retval 无
+  */
 void Pump_Start(void)
 {
 	TIM_CCxCmd(TIM8, TIM_Channel_3, TIM_CCx_Enable);
 }	
 
+/**
+  * @brief  启动传送带
+  * @param  无
+  * @retval 无
+  */
 void Conveyor_Start(void)
 {
 	TIM_CCxCmd(TIM8, TIM_Channel_4, TIM_CCx_Enable);
 }
 
+/**
+  * @brief  关闭水泵
+  * @param  无
+  * @retval 无
+  */
 void Pump_Stop(void)
 {
 	TIM_CCxCmd(TIM8, TIM_Channel_3, TIM_CCx_Disable);
 }	
 
+/**
+  * @brief  关闭传送带
+  * @param  无
+  * @retval 无
+  */
 void Conveyor_Stop(void)
 {
 	TIM_CCxCmd(TIM8, TIM_Channel_4, TIM_CCx_Disable);

@@ -855,6 +855,26 @@
               <FileType>5</FileType>
               <FilePath>.\HardWare\PID.h</FilePath>
             </File>
+            <File>
+              <FileName>USART_DMA.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HardWare\USART_DMA.c</FilePath>
+            </File>
+            <File>
+              <FileName>USART_DMA.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\HardWare\USART_DMA.h</FilePath>
+            </File>
+            <File>
+              <FileName>Measure.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HardWare\Measure.c</FilePath>
+            </File>
+            <File>
+              <FileName>Measure.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\HardWare\Measure.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -959,6 +979,26 @@
               <FileName>DMA1.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\System\DMA1.h</FilePath>
+            </File>
+            <File>
+              <FileName>DMA2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\System\DMA2.c</FilePath>
+            </File>
+            <File>
+              <FileName>DMA2.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\System\DMA2.h</FilePath>
+            </File>
+            <File>
+              <FileName>ADC1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\System\ADC1.c</FilePath>
+            </File>
+            <File>
+              <FileName>ADC1.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\System\ADC1.h</FilePath>
             </File>
           </Files>
         </Group>
