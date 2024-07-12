@@ -21,7 +21,6 @@
 #include "PID.h"
 #include "Measure.h"
 #include "TIM8.h"
-#include "GPS.h"
 #include <string.h>
 
 static void Controller_Config(ControllerInit* ControllerStructure);
@@ -30,7 +29,7 @@ PID mypid;
 void test(void)
 {
 //	printf("%f\t", Measure_GetVoltage2());
-	printf("Q,%f,%f\t,", Measure_GetVoltage(), Measure_GetVoltage2());
+	printf("M,%f,%f\t,", Measure_GetVoltage(), Measure_GetVoltage2());
 	
 //	printf("%d\t", MotorY_GetRemoteOriPWM());
 //	printf("%d\t", MotorX_GetRemoteOriPWM());
@@ -70,10 +69,8 @@ int main(void)
 	double V1, V2;							/* 需要测量的左电池电压V1、右电池电压V2 */
 	char To_server_buf[100];				/* 发送至服务器端的字符串 */
 	
-	// test	
 	LED_Init();
-	Bluetooth_Init(128000, RESET, RESET);
-	GPS_Init(115200);
+	Bluetooth_Init(9600, RESET, RESET);
 	USART_DMA_Init(115200);
 	Motor_Init();
 	SideMotor_Init();
@@ -83,7 +80,7 @@ int main(void)
 	Measure_Init();
 	while(1)
 	{
-//		test();
+		test();
 		
 		/*-- Bluetooth monitor number */
 		Bluetooth_SetNum_f(&(mypid.kd), 'd');
@@ -101,7 +98,7 @@ int main(void)
 		if (ready_send_server)
 		{
 			ready_send_server = RESET;
-			sprintf(To_server_buf, "Q,%.2f,%.2f,", V1, V2);
+			sprintf(To_server_buf, "M,%.3f,%.3f,", V1, V2);
 			USART_DMA_SendString(To_server_buf);				
 		}
 		Controller_Config(&Controller);

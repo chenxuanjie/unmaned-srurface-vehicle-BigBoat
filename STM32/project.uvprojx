@@ -879,16 +879,6 @@
               <FileType>5</FileType>
               <FilePath>.\HardWare\Measure.h</FilePath>
             </File>
-            <File>
-              <FileName>GPS.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\HardWare\GPS.c</FilePath>
-            </File>
-            <File>
-              <FileName>GPS.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\HardWare\GPS.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -1033,16 +1023,6 @@
               <FileName>TIM11.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\System\TIM11.h</FilePath>
-            </File>
-            <File>
-              <FileName>USART2.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\System\USART2.c</FilePath>
-            </File>
-            <File>
-              <FileName>USART2.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\System\USART2.h</FilePath>
             </File>
           </Files>
         </Group>
