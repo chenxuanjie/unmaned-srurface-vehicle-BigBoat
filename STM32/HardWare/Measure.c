@@ -33,7 +33,7 @@ double Measure_GetVoltage(void)
 	 * MCU_V = ConversionValue * 3.3 / 4096
 	 *	V = MCU_V / (10 / 60)
 	**/
-	V = (double)Measure_GetOriVoltage() *3.3/4096/(VOLTAG1_R1/(VOLTAG1_R1 + VOLTAG1_R2));
+	V = (double)Measure_GetADC1() *3.3/4096/(VOLTAG1_R1/(VOLTAG1_R1 + VOLTAG1_R2));
 	/*	¼ÆËãÄÚ×èÑ¹½µ²¢²¹³¥*/
 	V += Line_R * (V/(VOLTAG1_R1 + VOLTAG1_R2));
 	V = (futherV + lastV + V) / 3;
@@ -53,9 +53,9 @@ double Measure_GetVoltage2(void)
 	 * MCU_V = ConversionValue * 3.3 / 4096
 	 *	V = MCU_V / (10 / 60)
 	**/
-	V = (double)Measure_GetOriVoltage2() *3.3/4096/(VOLTAG2_R1/(VOLTAG2_R1 + VOLTAG2_R2));
-	/*	¼ÆËãÄÚ×èÑ¹½µ²¢²¹³¥*/
-	V += Line_R * (V/(VOLTAG1_R1 + VOLTAG1_R2));
+	V = (double)Measure_GetADC2() *3.3/4096/(VOLTAG2_R1/(VOLTAG2_R1 + VOLTAG2_R2));
+
+	V += Line_R * (V/(VOLTAG1_R1 + VOLTAG1_R2));	/*	¼ÆËãÄÚ×èÑ¹½µ²¢²¹³¥*/
 	V = (futherV + lastV + V) / 3;
 	futherV = lastV;
 	lastV = V;
@@ -79,15 +79,24 @@ double Measure_GetTemp(void)
 
 	return temp;
 }
-
-uint16_t Measure_GetOriVoltage(void)
+uint16_t Measure_GetADC1(void)
 {
 	return TempDatas_ADC1[VOLTAGE_VALUE];
 }
 
-uint16_t Measure_GetOriVoltage2(void)
+uint16_t Measure_GetADC2(void)
 {
 	return TempDatas_ADC1[VOLTAGE2_VALUE];
+}
+
+double Measure_GetOriVoltage(void)
+{
+	return (double)TempDatas_ADC1[VOLTAGE_VALUE] *3.3/4096/(VOLTAG1_R1/(VOLTAG1_R1 + VOLTAG1_R2));
+}
+
+double Measure_GetOriVoltage2(void)
+{
+	return (double)TempDatas_ADC1[VOLTAGE2_VALUE] *3.3/4096/(VOLTAG2_R1/(VOLTAG2_R1 + VOLTAG2_R2));
 }
 
 uint16_t Measure_GetOriTemp(void)
@@ -108,9 +117,9 @@ void Measure_GetR(void)
 {
 	double voltage1_R1, voltage1_R2, voltage2_R1, voltage2_R2;
 	
-	voltage1_R1 = (double)Measure_GetOriVoltage() *3.3/4096;
+	voltage1_R1 = (double)Measure_GetADC1() *3.3/4096;
 	voltage1_R2 = (double)Measure_GetVoltage() - voltage1_R1;
-	voltage2_R1 = (double)Measure_GetOriVoltage2() *3.3/4096;
+	voltage2_R1 = (double)Measure_GetADC2() *3.3/4096;
 	voltage2_R2 = (double)Measure_GetVoltage2() - voltage2_R1;
 	printf("V1R1:%f, V1R2:%f\t", voltage1_R1, voltage1_R2);
 	printf("V2R1:%f, V2R2:%f\t", voltage2_R1, voltage2_R2);

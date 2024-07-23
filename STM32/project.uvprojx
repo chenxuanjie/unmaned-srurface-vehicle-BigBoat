@@ -1054,6 +1054,16 @@
               <FileType>5</FileType>
               <FilePath>.\User\main.h</FilePath>
             </File>
+            <File>
+              <FileName>FormatConversion.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\FormatConversion.c</FilePath>
+            </File>
+            <File>
+              <FileName>FormatConversion.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\User\FormatConversion.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

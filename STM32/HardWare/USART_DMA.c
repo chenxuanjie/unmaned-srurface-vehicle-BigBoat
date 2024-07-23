@@ -11,7 +11,6 @@ char string[USART_DMA_DATA_MAXSIZE];
 
 void USART_DMA_Init(uint32_t BaudRate)
 {
-
 	USART1_Config(BaudRate);
 	USART1_SetIRQHandler(USART_DMA_IRQHandler);
 	DMA2_USART1_Init();
@@ -19,30 +18,26 @@ void USART_DMA_Init(uint32_t BaudRate)
 }
 
 /**
-  * @brief  Get string from PC
+  * @brief  Get string from NX
   * @param  
   * @retval 
   */
-int8_t USART_DMA_GetInfo(Info* InfoStructure)
+int8_t USART_DMA_GetStringFromNX(char* s)
 {
-	char *num_s = NULL;
-	char temp_string[USART_DMA_DATA_MAXSIZE] = "";
+//	char temp_string[USART_DMA_DATA_MAXSIZE] = "";
 
-	sprintf(temp_string, "en:%d\r\n", Usart.SendEN);
+//	sprintf(temp_string, "en:%d\r\n", Usart.SendEN);
 	/* Recieve Data *******************/
+
 	if (Usart.SendEN != RESET)
 	{	
 		/* Get string from Pc string recieve buf */
-		strncpy(temp_string, Datas2, sizeof(Datas2));
-		/* update variable "yaw" when aceept right */
-		if ((num_s = strstr(temp_string, "yaw=")) != NULL)
-		{
-			num_s += 4;				
-			InfoStructure->yaw = atoi(num_s);
-		}		
+		strncpy(s, Datas2, sizeof(Datas2));
+		/* update variable "yaw" when aceept right */		
 	}
+	else
+		return -1;
 
-	
 	return 0;
 }
 

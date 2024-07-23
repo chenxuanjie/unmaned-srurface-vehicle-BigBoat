@@ -21,8 +21,11 @@ typedef struct {
 }UsartNumber;
 
 typedef struct {
-	int32_t yaw;
-}Info;
+	int32_t LMainMotor_PWM;
+	int32_t RMainMotor_PWM;
+	int32_t LSideMotor_PWM;
+	int32_t RSideMotor_PWM;
+}MessageFromNXInit;
 	
 extern char string[USART_DMA_DATA_MAXSIZE];
 
@@ -31,7 +34,7 @@ int8_t USART_DMA_SetNum(int32_t *n, int c);
 int8_t USART_DMA_SetNum2(UsartNumber BNumStructure[]);
 int8_t USART_DMA_SetNum_f(float *n, int c);
 int8_t USART_DMA_SetNum2_f(UsartNumber BNumStructure[]);
-int8_t USART_DMA_GetInfo(Info* InfoStructure);
+int8_t USART_DMA_GetStringFromNX(char* s);
 void USART_DMA_UpdateBuf(void);
 void USART_DMA_GetBuf(char *buf);
 void USART_DMA_SendString(char *buf);

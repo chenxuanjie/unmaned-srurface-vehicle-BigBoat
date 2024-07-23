@@ -12,11 +12,5 @@
 #define REMOTE_PWM_RIGHTHALF	((REMOTE_PWM_MID - REMOTE_PWM_MIN2) / 2 + REMOTE_PWM_MID)	/* A point 3/4 of the way down the X-axis */
 /* @ref remote value definition ********/
 
-typedef struct{
-	int16_t RemoteModeEN;
-	int16_t AutoModeEN;
-	int16_t RemoteMode2;
-	
-} ControllerInit;
 
 #endif
