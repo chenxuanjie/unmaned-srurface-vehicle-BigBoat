@@ -116,7 +116,7 @@ int main(void)
 		if (ready_send_server)
 		{
 			ready_send_server = RESET;
-			sprintf(To_server_buf, "M,%.3f,%.3f,\n", V1, V2);
+			sprintf(To_server_buf, "M,%.3f,%.3f,", V1, V2);
 			USART_DMA_SendString(To_server_buf);				
 		}
 
@@ -127,7 +127,7 @@ int main(void)
 		{
 			/*-- auto mode --------------------------------------------------------------------*/
 			case UP:
-				printf("1111\r\n");
+//				printf("1111\r\n");
 				LMainMotor.PWM = MessageFromNX.LMainMotor_PWM;
 				RMainMotor.PWM = MessageFromNX.RMainMotor_PWM;
 				LSideMotor.PWM = MessageFromNX.LSideMotor_PWM;
@@ -139,6 +139,8 @@ int main(void)
 			case MID:			
 				LMainMotor.PWM = MotorLeft_GetRemotePWM2();
 				RMainMotor.PWM = MotorRight_GetRemotePWM2();
+				LSideMotor.PWM = 1500;
+				RSideMotor.PWM = 1500;
 			
 				LServo.PWM = Servo_GetRemotePWM();
 				RServo.PWM = Servo_GetRemotePWM();
