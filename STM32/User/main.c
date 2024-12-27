@@ -33,15 +33,15 @@ void test(void)
 //	printf("%f\t", Measure_GetVoltage2());
 //	printf("M:%f,%f,%f,%f,\t", Measure_GetVoltage(), Measure_GetVoltage2(),Measure_GetOriVoltage(),Measure_GetOriVoltage2());
 
-//	printf("%d\t", MotorY_GetRemoteOriPWM());
-//	printf("%d\t", MotorX_GetRemoteOriPWM());
-//	printf("%d\t", Pushrod_GetRemoteOriPWM());
-//	printf("%d\t", Servo_GetRemoteOriPWM());
-//	
-//	printf("%d\t", SWIC1_GetRemoteOriPWM());
-//	printf("%d\t", SWIC2_GetRemoteOriPWM());
-//	printf("%d\t", SWIC3_GetRemoteOriPWM());
-//	printf("%d\t", SWIC4_GetRemoteOriPWM());
+	printf("%d\t", MotorY_GetRemoteOriPWM());
+	printf("%d\t", MotorX_GetRemoteOriPWM());
+	printf("%d\t", Pushrod_GetRemoteOriPWM());
+	printf("%d\t", Servo_GetRemoteOriPWM());
+	
+	printf("%d\t", SWIC1_GetRemoteOriPWM());
+	printf("%d\t", SWIC2_GetRemoteOriPWM());
+	printf("%d\t", SWIC3_GetRemoteOriPWM());
+	printf("%d\t", SWIC4_GetRemoteOriPWM());
 	
 	
 //	printf("%d\t", MotorLeft_GetRemotePWM());
@@ -52,7 +52,7 @@ void test(void)
 //	printf("%d\t", Conveyor_GetPWM());
 //	printf("%d\t", Pump_GetPWM());
 	
-//	printf("\r\n");
+	printf("\r\n");
 	
 //	Measure_GetR();
 }
@@ -225,7 +225,7 @@ int main(void)
 	ServoLeft_SetPWM(LServo.PWM);
 	ServoRight_SetPWM(3000 - RServo.PWM);
 	PushrodLeft_SetPWM(LPushrod.PWM);
-	PushrodRight_SetPWM(RPushrod.PWM);
+	PushrodRight_SetPWM(3000 - RPushrod.PWM);
 	Pump_SetPWM(Pump.PWM);		
 	Conveyor_SetPWM(Conveyor.PWM);
 	}
