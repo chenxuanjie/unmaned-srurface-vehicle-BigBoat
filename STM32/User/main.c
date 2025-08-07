@@ -171,7 +171,7 @@ int main(void)
 	ServoLeft_SetPWM(LServo.PWM);
 	ServoRight_SetPWM(3000 - RServo.PWM);
 	PushrodLeft_SetPWM(LPushrod.PWM);
-	PushrodRight_SetPWM(RPushrod.PWM);
+	PushrodRight_SetPWM(3000 - RPushrod.PWM);
 	Pump_SetPWM(Pump.PWM);		
 	Conveyor_SetPWM(Conveyor.PWM);
 	}
